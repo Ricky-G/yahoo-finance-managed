@@ -223,7 +223,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\MaasOne\YahooManaged.csproj">
+    <ProjectReference Include="..\YahooManaged\YahooManaged.csproj">
       <Project>{203E203C-9025-4D3F-BAD7-F36D53E8B9E7}</Project>
       <Name>YahooManaged</Name>
     </ProjectReference>
