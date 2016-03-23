@@ -1,10 +1,10 @@
-// ******************************************************************************
+﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,21 +23,19 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Net;
-using MaasOne.Xml;
+using YahooManaged.Base;
 
-
-namespace MaasOne.Search.BOSS
+namespace YahooManaged.Services.Search.BOSS
 {
 
 
 
-    public class SearchDownloadSettings : Base.SettingsBase, INotifyPropertyChanged
+    public class SearchDownloadSettings : SettingsBase, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -87,7 +85,7 @@ namespace MaasOne.Search.BOSS
             }
             url.Append("://yboss.yahooapis.com/ysearch/");
 
-            foreach (MaasOne.Search.BOSS.SearchService serv in this.Services)
+            foreach (SearchService serv in this.Services)
             {
                 url.Append(serv.ServiceName + ",");
             }
@@ -171,7 +169,7 @@ namespace MaasOne.Search.BOSS
             string nParam = string.Empty;
             string nonce = oa.GenerateNonce();
             string timestamp = oa.GenerateTimeStamp();
-            string signature = oa.GenerateSignature(new Uri(Uri.EscapeUriString(url)), this.ConsumerKey, this.ConsumerSecret, "", "", "GET", timestamp, nonce, MaasOne.Search.BOSS.OAuthBase.SignatureTypes.HMACSHA1, out nUrl, out nParam);
+            string signature = oa.GenerateSignature(new Uri(Uri.EscapeUriString(url)), this.ConsumerKey, this.ConsumerSecret, "", "", "GET", timestamp, nonce, OAuthBase.SignatureTypes.HMACSHA1, out nUrl, out nParam);
             string headerValue = string.Format("OAuth oauth_version=\"1.0\", oauth_nonce=\"{0}\", oauth_timestamp=\"{1}\", oauth_consumer_key=\"{2}\", oauth_signature_method=\"HMAC-SHA1\", oauth_signature=\"{3}\"", nonce, timestamp, this.ConsumerKey, signature);
             return new KeyValuePair<HttpRequestHeader, string>(HttpRequestHeader.Authorization, headerValue);
         }
@@ -703,18 +701,18 @@ namespace MaasOne.Search.BOSS
                 pars.Append("-");
                 pars.Append(base.GetTimeSpanString(this.EarliestDate));
             }
-            if (this.Sorting != MaasOne.Search.BOSS.NewsSortRanking.None)
+            if (this.Sorting != NewsSortRanking.None)
             {
                 pars.Append("&sort=");
                 switch (this.Sorting)
                 {
-                    case MaasOne.Search.BOSS.NewsSortRanking.AsiaRanking:
+                    case NewsSortRanking.AsiaRanking:
                         pars.Append("asiarank");
                         break;
-                    case MaasOne.Search.BOSS.NewsSortRanking.EuRanking:
+                    case NewsSortRanking.EuRanking:
                         pars.Append("eurank");
                         break;
-                    case MaasOne.Search.BOSS.NewsSortRanking.UsRanking:
+                    case NewsSortRanking.UsRanking:
                         pars.Append("usrank");
                         break;
                     default:
@@ -821,7 +819,7 @@ namespace MaasOne.Search.BOSS
             pars.Append(base.GetUniversalParameters());
             if (this.AllowAdultContent)
                 pars.Append("&filter=no");
-            if (this.Dimensions != MaasOne.Search.BOSS.ImageSearchDimensions.All)
+            if (this.Dimensions != ImageSearchDimensions.All)
                 pars.Append("&dimensions=" + this.Dimensions.ToString().ToLower());
             if (this.RefererUrl != null)
                 pars.Append("&refererurl=" + this.RefererUrl.ToString());

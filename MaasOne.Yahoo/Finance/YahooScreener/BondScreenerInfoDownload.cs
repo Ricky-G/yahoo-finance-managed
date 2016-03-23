@@ -1,10 +1,10 @@
 // ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,20 +23,15 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using MaasOne.Xml;
-using System.Xml.Linq;
+using YahooManaged.Base;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Finance.YahooScreener
+namespace YahooManaged.Services.Finance.YahooScreener
 {
 
-    public partial class BondScreenerInfoDownload : Base.DownloadClient<BondScreenerInfoResult>
+    public partial class BondScreenerInfoDownload : DownloadClient<BondScreenerInfoResult>
     {
 
 
@@ -57,7 +52,7 @@ namespace MaasOne.Finance.YahooScreener
             base.DownloadAsync(settings, userArgs);
         }
 
-        protected override BondScreenerInfoResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override BondScreenerInfoResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             BondScreenerInfoDownloadSettings set = (BondScreenerInfoDownloadSettings)settings;
 
@@ -211,7 +206,7 @@ namespace MaasOne.Finance.YahooScreener
 
 
 
-    public class BondScreenerInfoDownloadSettings : Base.SettingsBase
+    public class BondScreenerInfoDownloadSettings : SettingsBase
     {
 
         public BondScreenerData Data { get; set; }

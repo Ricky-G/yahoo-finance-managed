@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MaasOne
+namespace YahooManaged
 {
     public abstract class LocalizationManager
     {

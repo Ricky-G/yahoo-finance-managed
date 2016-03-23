@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
-// **  MaasOne WebServices
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  YahooManaged WebServices
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -29,7 +29,7 @@ using System.Text;
 using System.Collections;
 
 
-namespace MaasOne.Xml
+namespace YahooManaged.Xml
 {
 
 
@@ -41,8 +41,8 @@ namespace MaasOne.Xml
         public XDocument(object[] content) { foreach (object obj in content) this.mElements.Add(obj); }
         public XDocument(XDeclaration declaration, object[] content) : this(content) { this.Declaration = declaration; }
 
-        public static MaasOne.Xml.XDocument Load(System.IO.Stream stream) { return Load(MyHelper.StreamToString(stream, System.Text.Encoding.UTF8)); }
-        public static MaasOne.Xml.XDocument Load(string text)
+        public static YahooManaged.Xml.XDocument Load(System.IO.Stream stream) { return Load(MyHelper.StreamToString(stream, System.Text.Encoding.UTF8)); }
+        public static YahooManaged.Xml.XDocument Load(string text)
         {
             return new XmlParser().ParseDocument(text);
         }

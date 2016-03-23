@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MaasOne.Base.ConnectionInfo">
+  <Class Name="YahooManaged.Base.ConnectionInfo">
     <Position X="12" Y="2" Width="1.5" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Base.DownloadEventArgs">
+  <Class Name="YahooManaged.Base.DownloadEventArgs">
     <Position X="4.75" Y="2.75" Width="1.75" />
     <Members>
       <Method Name="DownloadEventArgs" Hidden="true" />
     </Members>
     <TypeIdentifier />
   </Class>
-  <Class Name="MaasOne.Base.DownloadClient&lt;T&gt;">
+  <Class Name="YahooManaged.Base.DownloadClient&lt;T&gt;">
     <Position X="1.25" Y="2.5" Width="2.25" />
     <Members>
       <Method Name="ConvertDownloadCompletedEventArgs" Hidden="true" />
@@ -23,14 +23,14 @@
       <Method Name="SetSettings" Hidden="true" />
     </Members>
     <NestedTypes>
-      <Delegate Name="MaasOne.Base.DownloadClient&lt;T&gt;.AsyncDownloadCompletedEventHandler" Collapsed="true">
+      <Delegate Name="YahooManaged.Base.DownloadClient&lt;T&gt;.AsyncDownloadCompletedEventHandler" Collapsed="true">
         <TypeIdentifier />
       </Delegate>
     </NestedTypes>
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.QuotesDownload">
+  <Class Name="YahooManaged.Finance.YahooFinance.QuotesDownload">
     <Position X="1" Y="7.5" Width="2.75" />
     <Members>
       <Method Name="QuotesDownload" Hidden="true" />
@@ -43,7 +43,7 @@
       <Property Name="Settings" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.QuotesData">
+  <Class Name="YahooManaged.Finance.YahooFinance.QuotesData">
     <Position X="15.25" Y="5.25" Width="1.75" />
     <Members>
       <Property Name="Change" Hidden="true" />
@@ -65,12 +65,12 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Finance.QuotesBaseData">
+  <Class Name="YahooManaged.Finance.QuotesBaseData">
     <Position X="15.25" Y="0.75" Width="1.75" />
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Base.DownloadCompletedEventArgs&lt;T&gt;">
+  <Class Name="YahooManaged.Base.DownloadCompletedEventArgs&lt;T&gt;">
     <Position X="4.75" Y="4.75" Width="1.75" />
     <Members>
       <Method Name="DownloadCompletedEventArgs" Hidden="true" />
@@ -82,7 +82,7 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Base.Response&lt;T&gt;">
+  <Class Name="YahooManaged.Base.Response&lt;T&gt;">
     <Position X="9" Y="4.75" Width="1.75" />
     <Members>
       <Method Name="Response" Hidden="true" />
@@ -93,7 +93,7 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Base.SettingsBase" Collapsed="true">
+  <Class Name="YahooManaged.Base.SettingsBase" Collapsed="true">
     <Position X="6.75" Y="7" Width="1.5" />
     <Members>
       <Property Name="AdditionalHeaders" Hidden="true" />
@@ -103,7 +103,7 @@
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.QuotesDownloadSettings">
+  <Class Name="YahooManaged.Finance.YahooFinance.QuotesDownloadSettings">
     <Position X="6.75" Y="9" Width="1.5" />
     <Members>
       <Method Name="GetUrl" Hidden="true" />
@@ -117,13 +117,13 @@
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.QuotesResult">
+  <Class Name="YahooManaged.Finance.YahooFinance.QuotesResult">
     <Position X="11.75" Y="6" Width="2" />
     <Members>
       <Field Name="mSettings" Hidden="true" />
       <Method Name="QuotesResult" Hidden="true" />
     </Members>
-    <AssociationLine Name="Settings" Type="MaasOne.Finance.YahooFinance.QuotesDownloadSettings" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Settings" Type="YahooManaged.Finance.YahooFinance.QuotesDownloadSettings" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="12.75" Y="6.997" />
         <Point X="12.75" Y="9.5" />
@@ -141,7 +141,7 @@
       <Property Name="Items" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Enum Name="MaasOne.Finance.YahooFinance.QuoteProperty" Collapsed="true">
+  <Enum Name="YahooManaged.Finance.YahooFinance.QuoteProperty" Collapsed="true">
     <Position X="9.5" Y="10.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>QCSyAABhAAFAYFBQCjAQhCd2CKFkSGbBmM5ACAj8rII=</HashCode>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MaasOne.Finance.YahooFinance.Support.YIndexID">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.YIndexID">
     <Position X="6.25" Y="0.5" Width="2" />
     <Members>
       <Field Name="mDownloadComponents" Hidden="true" />
@@ -10,7 +10,7 @@
       <FileName>Finance\YahooFinance\Support\YIndexID.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.CountryInfo">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.CountryInfo">
     <Position X="6.25" Y="3.5" Width="2" />
     <Members>
       <Field Name="mCurrency" Hidden="true" />
@@ -20,7 +20,7 @@
       <Field Name="mName" Hidden="true" />
       <Method Name="ToString" Hidden="true" />
     </Members>
-    <AssociationLine Name="Currency" Type="MaasOne.Finance.YahooFinance.Support.CurrencyInfo" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Currency" Type="YahooManaged.Finance.YahooFinance.Support.CurrencyInfo" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6.812" Y="5.44" />
         <Point X="6.812" Y="6.732" />
@@ -37,7 +37,7 @@
       <Property Name="Currency" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.DaylightSavingTime">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.DaylightSavingTime">
     <Position X="9.75" Y="2.5" Width="1.5" />
     <Members>
       <Field Name="mEndDate" Hidden="true" />
@@ -49,7 +49,7 @@
       <FileName>Finance\YahooFinance\Support\DaylightSavingTime.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.WorldMarket">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.WorldMarket">
     <Position X="1.25" Y="4.75" Width="2.25" />
     <Members>
       <Field Name="mCountries" Hidden="true" />
@@ -57,14 +57,14 @@
       <Field Name="mStockExchanges" Hidden="true" />
       <Method Name="WorldMarket" Hidden="true" />
     </Members>
-    <AssociationLine Name="DefaultCountries" Type="MaasOne.Finance.YahooFinance.Support.CountryInfo" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="DefaultCountries" Type="YahooManaged.Finance.YahooFinance.Support.CountryInfo" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3" Y="4.75" />
         <Point X="3" Y="4.178" />
         <Point X="6.25" Y="4.178" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="DefaultCurrencies" Type="MaasOne.Finance.YahooFinance.Support.CurrencyInfo" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="DefaultCurrencies" Type="YahooManaged.Finance.YahooFinance.Support.CurrencyInfo" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="3.5" Y="6.434" />
         <Point X="5.125" Y="6.434" />
@@ -84,7 +84,7 @@
       <Property Name="DefaultStockExchanges" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.CurrencyInfo">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.CurrencyInfo">
     <Position X="4.5" Y="7.75" Width="2" />
     <Members>
       <Field Name="mID" Hidden="true" />
@@ -95,7 +95,7 @@
       <FileName>Finance\YahooFinance\Support\CurrencyInfo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.StockExchange">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.StockExchange">
     <Position X="7" Y="10.25" Width="2" />
     <Members>
       <Field Name="mCountry" Hidden="true" />
@@ -107,7 +107,7 @@
       <Property Name="Tags" Hidden="true" />
       <Method Name="ToString" Hidden="true" />
     </Members>
-    <AssociationLine Name="Country" Type="MaasOne.Finance.YahooFinance.Support.CountryInfo">
+    <AssociationLine Name="Country" Type="YahooManaged.Finance.YahooFinance.Support.CountryInfo">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.827" Y="0.07" />
       </MemberNameLabel>
@@ -121,7 +121,7 @@
       <Property Name="TradingTime" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="MaasOne.Finance.YahooFinance.Support.TradingTimeInfo">
+  <Class Name="YahooManaged.Finance.YahooFinance.Support.TradingTimeInfo">
     <Position X="10.75" Y="8" Width="2.25" />
     <Members>
       <Field Name="mDaylightSavingTimes" Hidden="true" />

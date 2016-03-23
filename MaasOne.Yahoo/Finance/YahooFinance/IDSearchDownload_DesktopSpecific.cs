@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,12 +23,11 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class IDSearchDownload
     {
@@ -39,7 +38,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="text">The used search text</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<IDSearchResult> Download(string text)
+        public YahooManaged.Base.Response<IDSearchResult> Download(string text)
         {
             if (text.Trim() == string.Empty)
                 throw new ArgumentNullException("text", "The text is empty.");
@@ -55,11 +54,11 @@ namespace MaasOne.Finance.YahooFinance
             ((IQuerySettings)settings).Query = text;
             return this.Download(settings);
         }
-        public Base.Response<IDSearchResult> Download(AlphabeticalIndex index)
+        public YahooManaged.Base.Response<IDSearchResult> Download(AlphabeticalIndex index)
         {
             return this.Download(new IDAlphabeticSearchDownloadSettings() { Index = index });
         }
-        public Base.Response<IDSearchResult> Download(IDSearchBaseSettings<IDSearchResult> settings)
+        public YahooManaged.Base.Response<IDSearchResult> Download(IDSearchBaseSettings<IDSearchResult> settings)
         {
             return base.Download(settings);
         }

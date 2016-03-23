@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-namespace MaasOne
+﻿namespace YahooManaged.Services
 {  
     public partial class YahooExtensions
     {

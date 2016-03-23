@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,12 +23,13 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Base;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance.Support
+namespace YahooManaged.Services.Finance.YahooFinance.Support
 {
     /// <summary>
     /// Class for downloading exchange data
@@ -108,7 +109,7 @@ namespace MaasOne.Finance.YahooFinance.Support
 
 
 
-        private void DownloadQuotesAsync_Completed(Base.DownloadClient<QuotesResult> sender, Base.DownloadCompletedEventArgs<QuotesResult> e)
+        private void DownloadQuotesAsync_Completed(YahooManaged.Base.DownloadClient<QuotesResult> sender, YahooManaged.Base.DownloadCompletedEventArgs<QuotesResult> e)
         {
             AsyncDownloadArgs dlArgs = (AsyncDownloadArgs)e.UserArgs;
             if (AsyncRateDownloadCompleted != null)
@@ -116,7 +117,7 @@ namespace MaasOne.Finance.YahooFinance.Support
                 AsyncRateDownloadCompleted(this, new ExchangeRateDownloadCompletedEventArgs(dlArgs.UserArgs, this.ToResponse(e.Response, dlArgs.Currencies)));
             }
         }
-        private void DownloadHistQuotesAsync_Completed(Base.DownloadClient<HistQuotesResult> sender, Base.DownloadCompletedEventArgs<HistQuotesResult> e)
+        private void DownloadHistQuotesAsync_Completed(YahooManaged.Base.DownloadClient<HistQuotesResult> sender, YahooManaged.Base.DownloadCompletedEventArgs<HistQuotesResult> e)
         {
             AsyncDownloadArgs dlArgs = (AsyncDownloadArgs)e.UserArgs;
             if (AsyncRateDownloadCompleted != null)
@@ -125,7 +126,7 @@ namespace MaasOne.Finance.YahooFinance.Support
             }
         }
 
-        private ExchangeRateResponse ToResponse(Base.Response<QuotesResult> resp, YCurrencyID[] currencies)
+        private ExchangeRateResponse ToResponse(YahooManaged.Base.Response<QuotesResult> resp, YCurrencyID[] currencies)
         {
             List<ExchangeRateData> lst = new List<ExchangeRateData>();
             if (resp.Result != null)
@@ -139,7 +140,7 @@ namespace MaasOne.Finance.YahooFinance.Support
             }
             return new ExchangeRateResponse(resp.Connection, new ExchangeRateResult(lst.ToArray(), currencies));
         }
-        private ExchangeRateResponse ToResponse(Base.Response<HistQuotesResult> resp, YCurrencyID[] currencies)
+        private ExchangeRateResponse ToResponse(YahooManaged.Base.Response<HistQuotesResult> resp, YCurrencyID[] currencies)
         {
             List<ExchangeRateData> lst = new List<ExchangeRateData>();
             if (resp.Result != null)
@@ -166,7 +167,7 @@ namespace MaasOne.Finance.YahooFinance.Support
             return new ExchangeRateResponse(resp.Connection, new ExchangeRateResult(lst.ToArray(), currencies));
         }
 
-        private class AsyncDownloadArgs : Base.DownloadEventArgs
+        private class AsyncDownloadArgs : DownloadEventArgs
         {
             public YCurrencyID[] Currencies;
             public AsyncDownloadArgs(object userArgs, YCurrencyID[] curs)
@@ -182,7 +183,7 @@ namespace MaasOne.Finance.YahooFinance.Support
 
 
 
-    public class ExchangeRateDownloadCompletedEventArgs : Base.DownloadCompletedEventArgs<ExchangeRateResult>
+    public class ExchangeRateDownloadCompletedEventArgs : DownloadCompletedEventArgs<ExchangeRateResult>
     {
 
         public ExchangeRateDownloadCompletedEventArgs(object userArgs, ExchangeRateResponse response)
@@ -192,10 +193,10 @@ namespace MaasOne.Finance.YahooFinance.Support
 
     }
 
-    public class ExchangeRateResponse : Base.Response<ExchangeRateResult>
+    public class ExchangeRateResponse : Response<ExchangeRateResult>
     {
 
-        public ExchangeRateResponse(Base.ConnectionInfo connInfo, ExchangeRateResult result)
+        public ExchangeRateResponse(YahooManaged.Base.ConnectionInfo connInfo, ExchangeRateResult result)
             : base(connInfo, result)
         {
         }

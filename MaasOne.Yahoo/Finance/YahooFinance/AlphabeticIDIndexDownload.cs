@@ -1,10 +1,10 @@
 // ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,22 +23,18 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using MaasOne.Xml;
-using System.Xml.Linq;
+using YahooManaged.Base;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
 
     /// <summary>
     /// Provides methods for downloading Alphabetic Index for ID Search
     /// </summary>
-    public partial class AlphabeticIDIndexDownload : Base.DownloadClient<AlphabeticIDIndexResult>
+    public partial class AlphabeticIDIndexDownload : DownloadClient<AlphabeticIDIndexResult>
     {
 
         public AlphabeticIDIndexSettings Settings { get { return (AlphabeticIDIndexSettings)base.Settings; } set { base.SetSettings(value); } }
@@ -64,7 +60,7 @@ namespace MaasOne.Finance.YahooFinance
         }
         
        
-        protected override AlphabeticIDIndexResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override AlphabeticIDIndexResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             AlphabeticIDIndexSettings s = (AlphabeticIDIndexSettings)settings;
             System.Globalization.CultureInfo convCulture = new System.Globalization.CultureInfo("en-US");
@@ -230,7 +226,7 @@ namespace MaasOne.Finance.YahooFinance
     }
 
 
-    public class AlphabeticIDIndexSettings : Base.SettingsBase
+    public class AlphabeticIDIndexSettings : SettingsBase
     {
         private AlphabeticalTopIndex mTopIndex = null;
         /// <summary>

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,12 +23,12 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class CompanyInfoDownload 
     {
@@ -39,7 +39,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="managedID">The managed ID of the company</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<CompanyInfoResult> Download(IID managedID)
+        public YahooManaged.Base.Response<CompanyInfoResult> Download(IID managedID)
         {
             if (managedID == null)
                 throw new ArgumentNullException("managedID", "The passed ID is null.");
@@ -51,7 +51,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="unmanagedID">The unmanaged ID of the company</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<CompanyInfoResult> Download(string unmanagedID)
+        public YahooManaged.Base.Response<CompanyInfoResult> Download(string unmanagedID)
         {
             if (unmanagedID == string.Empty)
                 throw new ArgumentNullException("unmanagedID", "The passed ID is empty.");
@@ -63,7 +63,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="ids">The managed list of IDs of the companies</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<CompanyInfoResult> Download(IEnumerable<IID> ids)
+        public YahooManaged.Base.Response<CompanyInfoResult> Download(IEnumerable<IID> ids)
         {
             if (ids == null)
                 throw new ArgumentNullException("ids", "The passed list is null.");
@@ -75,13 +75,13 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="ids">The unmanaged list of IDs of the companies</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<CompanyInfoResult> Download(IEnumerable<string> ids)
+        public YahooManaged.Base.Response<CompanyInfoResult> Download(IEnumerable<string> ids)
         {
             if (ids == null)
                 throw new ArgumentNullException("ids", "The passed list is null.");
             return this.Download(new CompanyInfoDownloadSettings(MyHelper.EnumToArray(ids)));
         }
-        public Base.Response<CompanyInfoResult> Download(CompanyInfoDownloadSettings settings)
+        public YahooManaged.Base.Response<CompanyInfoResult> Download(CompanyInfoDownloadSettings settings)
         {
             return base.Download(settings);
         }

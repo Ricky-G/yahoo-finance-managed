@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,30 +23,29 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class FuturesChainDownload
     {
 
 
-        public Base.Response<FuturesResult> Download(IID managedID)
+        public YahooManaged.Base.Response<FuturesResult> Download(IID managedID)
         {
             if (managedID == null)
                 throw new ArgumentNullException("unmanagedID", "The passed ID is empty.");
             return this.Download(managedID.ID);
         }
 
-        public Base.Response<FuturesResult> Download(string unmanagedID)
+        public YahooManaged.Base.Response<FuturesResult> Download(string unmanagedID)
         {
             return base.Download(new FuturesChainDownloadSettings(unmanagedID));
         }
 
-        public Base.Response<FuturesResult> Download()
+        public YahooManaged.Base.Response<FuturesResult> Download()
         {
             return base.Download(this.Settings);
         }

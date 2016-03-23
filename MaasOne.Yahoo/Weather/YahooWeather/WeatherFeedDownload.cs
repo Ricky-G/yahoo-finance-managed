@@ -1,10 +1,10 @@
-// ******************************************************************************
+﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,21 +23,17 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using MaasOne.Xml;
-using System.Xml.Linq;
+using YahooManaged.Base;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Weather.YahooWeather
+namespace YahooManaged.Services.Weather.YahooWeather
 {
 
 
-    public partial class WeatherFeedDownload : Base.DownloadClient<WeatherFeedResult>
+    public partial class WeatherFeedDownload : DownloadClient<WeatherFeedResult>
     {
 
 
@@ -92,7 +88,7 @@ namespace MaasOne.Weather.YahooWeather
             }
         }
 
-        protected override WeatherFeedResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override WeatherFeedResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             List<WeatherFeed> feeds = new List<WeatherFeed>();
             XDocument xmlDoc = MyHelper.ParseXmlDocument(stream);
@@ -394,13 +390,13 @@ namespace MaasOne.Weather.YahooWeather
                                                 double d = 0;
                                                 if (double.TryParse(itemNode.Value, System.Globalization.NumberStyles.Any, convCulture, out d))
                                                 {
-                                                    newItem.Coordinates = new Geo.Coordinates(newItem.Coordinates.Longitude, d);
+                                                    newItem.Coordinates = new YahooManaged.Geo.Coordinates(newItem.Coordinates.Longitude, d);
                                                 }
                                                 break;
                                             case ("long"):
                                                 if (double.TryParse(itemNode.Value, System.Globalization.NumberStyles.Any, convCulture, out d))
                                                 {
-                                                    newItem.Coordinates = new Geo.Coordinates(d, newItem.Coordinates.Latitude);
+                                                    newItem.Coordinates = new YahooManaged.Geo.Coordinates(d, newItem.Coordinates.Latitude);
                                                 }
                                                 break;
                                         }
@@ -454,7 +450,7 @@ namespace MaasOne.Weather.YahooWeather
 
 
 
-    public abstract class WeatherFeedDownloadSettings : Base.SettingsBase
+    public abstract class WeatherFeedDownloadSettings : SettingsBase
     {
 
         public bool IsMetric { get; set; }
@@ -550,7 +546,7 @@ namespace MaasOne.Weather.YahooWeather
         }
     }
 
-    public class WeatherFeedKeywordDownloadSettings : WeatherFeedDownloadSettings, MaasOne.IResultIndexSettings
+    public class WeatherFeedKeywordDownloadSettings : WeatherFeedDownloadSettings, YahooManaged.IResultIndexSettings
     {
 
         public int Index { get; set; }

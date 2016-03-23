@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,20 +23,20 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using MaasOne.Xml;
-using System.Text;
-using System.Xml.Linq;
+using YahooManaged.Base;
+using YahooManaged.Finance;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     /// <summary>
     /// Provides methods for downloading quote options.
     /// </summary>
     /// <remarks></remarks>
-    public partial class QuoteOptionsDownload : Base.DownloadClient<QuoteOptionsResult>
+    public partial class QuoteOptionsDownload : DownloadClient<QuoteOptionsResult>
     {
 
         public QuoteOptionsDownloadSettings Settings { get { return (QuoteOptionsDownloadSettings)base.Settings; } set { base.SetSettings(value); } }
@@ -169,7 +169,7 @@ namespace MaasOne.Finance.YahooFinance
         }
 
 
-        protected override QuoteOptionsResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override QuoteOptionsResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             List<QuoteOptionsDataChain> options = new List<QuoteOptionsDataChain>();
 
@@ -394,7 +394,7 @@ namespace MaasOne.Finance.YahooFinance
 
 
 
-    public class QuoteOptionsDownloadSettings : Base.SettingsBase
+    public class QuoteOptionsDownloadSettings : SettingsBase
     {
 
         public string[] IDs { get; set; }

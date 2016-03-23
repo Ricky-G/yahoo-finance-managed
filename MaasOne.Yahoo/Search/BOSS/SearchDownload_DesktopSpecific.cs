@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,23 +23,20 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
-using System;
+
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
 
-
-namespace MaasOne.Search.BOSS
+namespace YahooManaged.Services.Search.BOSS
 {
     public partial class SearchDownload
     {
 
 
-        public Base.Response<SearchResult> Download(SearchService service)
+        public YahooManaged.Base.Response<SearchResult> Download(SearchService service)
         {
             return this.Download(new SearchService[] { service });
         }
-        public Base.Response<SearchResult> Download(IEnumerable<SearchService> services)
+        public YahooManaged.Base.Response<SearchResult> Download(IEnumerable<SearchService> services)
         {
             SearchDownloadSettings set = (SearchDownloadSettings)this.Settings.Clone();
             set.Services.Clear();
@@ -50,7 +47,7 @@ namespace MaasOne.Search.BOSS
             return this.Download(set);
         }
 
-        public Base.Response<SearchResult> Download(SearchDownloadSettings settings)
+        public YahooManaged.Base.Response<SearchResult> Download(SearchDownloadSettings settings)
         {
             return base.Download(settings);
         }

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,26 +23,25 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MaasOne.Finance.YahooScreener;
-using MaasOne.Finance.YahooScreener.Criterias;
+using YahooManaged.Finance;
+using YahooManaged.Services.Finance.YahooScreener.Criterias;
 
-
-namespace MaasOne.Finance.YahooScreener
+namespace YahooManaged.Services.Finance.YahooScreener
 {
     public partial class StockScreenerDownload 
     {
 
 
-        public Base.Response<StockScreenerResult> Download(IEnumerable<StockCriteriaDefinition> criterias)
+        public YahooManaged.Base.Response<StockScreenerResult> Download(IEnumerable<StockCriteriaDefinition> criterias)
         {
             if (criterias == null)
                 throw new ArgumentNullException("criterias", "The criterias enumerable is null.");
             return base.Download(new StockScreenerDownloadSettings() { Criterias = MyHelper.EnumToArray(criterias) });
         }
-        public Base.Response<StockScreenerResult> Download(IEnumerable<IID> ids, IEnumerable<StockCriteriaDefinition> criterias)
+        public YahooManaged.Base.Response<StockScreenerResult> Download(IEnumerable<IID> ids, IEnumerable<StockCriteriaDefinition> criterias)
         {
             if (ids == null)
                 throw new ArgumentNullException("ids", "The ID Enumerable is null.");
@@ -53,7 +52,7 @@ namespace MaasOne.Finance.YahooScreener
             }
             return this.Download(strIDs, criterias);
         }
-        public Base.Response<StockScreenerResult> Download(IEnumerable<string> ids, IEnumerable<StockCriteriaDefinition> criterias)
+        public YahooManaged.Base.Response<StockScreenerResult> Download(IEnumerable<string> ids, IEnumerable<StockCriteriaDefinition> criterias)
         {
             if (criterias == null)
                 throw new ArgumentNullException("criterias", "The criterias enumerable is null.");

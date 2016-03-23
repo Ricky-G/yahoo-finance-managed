@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,17 +23,13 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-
-namespace MaasOne.Search.BOSS
+namespace YahooManaged.Services.Search.BOSS
 {
     public partial class SuggestionDownload
     {
 
-        public Base.Response<SuggestionResult> Download(string query, YahooServer server)
+        public YahooManaged.Base.Response<SuggestionResult> Download(string query, YahooServer server)
         {
             return base.Download(new SuggestionDownloadSettings() { Query = query, Server = server });
         }

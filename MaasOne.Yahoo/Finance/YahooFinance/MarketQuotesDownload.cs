@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,19 +23,19 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
+using YahooManaged.Base;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     /// <summary>
     /// Provides methods for downloading market quotes data.
     /// </summary>
     /// <remarks></remarks>
-    public partial class MarketQuotesDownload : Base.DownloadClient<MarketQuotesResult>
+    public partial class MarketQuotesDownload : DownloadClient<MarketQuotesResult>
     {
 
         public MarketQuotesDownloadSettings Settings { get { return (MarketQuotesDownloadSettings)base.Settings; } set { base.SetSettings(value); } }
@@ -90,7 +90,7 @@ namespace MaasOne.Finance.YahooFinance
             base.DownloadAsync(settings, userArgs);
         }
 
-        protected override MarketQuotesResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override MarketQuotesResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             System.Globalization.CultureInfo ci = FinanceHelper.DefaultYqlCulture;
 
@@ -282,7 +282,7 @@ namespace MaasOne.Finance.YahooFinance
     }
 
 
-    public class MarketQuotesDownloadSettings : Base.SettingsBase, ITextEncodingSettings
+    public class MarketQuotesDownloadSettings : SettingsBase, ITextEncodingSettings
     {
         /// <summary>
         /// The text encoding for downloading quotes NOT from YQL server.

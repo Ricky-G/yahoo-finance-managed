@@ -1,10 +1,10 @@
-// ******************************************************************************
+﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,21 +23,17 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using MaasOne.Xml;
-using System.Xml.Linq;
+using YahooManaged.Base;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Search.BOSS
+namespace YahooManaged.Services.Search.BOSS
 {
 
 
-    public partial class SearchDownload : Base.DownloadClient<SearchResult>
+    public partial class SearchDownload : DownloadClient<SearchResult>
     {
 
         public SearchDownloadSettings Settings { get { return (SearchDownloadSettings)base.Settings; } set { base.SetSettings(value); } }
@@ -69,7 +65,7 @@ namespace MaasOne.Search.BOSS
 
 
 
-        protected override SearchResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override SearchResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             List<SearchDataContainer> containers = new List<SearchDataContainer>();
             List<SearchData> lst = new List<SearchData>();

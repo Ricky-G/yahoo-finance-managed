@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,12 +23,12 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class HistQuotesDownload 
     {
@@ -42,7 +42,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="interval">The trading period interval</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<HistQuotesResult> Download(IID managedID, System.DateTime fromDate, System.DateTime todate, HistQuotesInterval interval)
+        public YahooManaged.Base.Response<HistQuotesResult> Download(IID managedID, System.DateTime fromDate, System.DateTime todate, HistQuotesInterval interval)
         {
             if (managedID == null)
                 throw new ArgumentNullException("managedID", "The passed ID is null.");
@@ -57,7 +57,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="interval">The trading period interval</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<HistQuotesResult> Download(string unmanagedID, System.DateTime fromDate, System.DateTime todate, HistQuotesInterval interval)
+        public YahooManaged.Base.Response<HistQuotesResult> Download(string unmanagedID, System.DateTime fromDate, System.DateTime todate, HistQuotesInterval interval)
         {
             if (unmanagedID.Trim() == string.Empty)
                 throw new ArgumentNullException("unmanagedID", "The passed ID is empty.");
@@ -72,7 +72,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="interval">The trading period interval</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<HistQuotesResult> Download(IEnumerable<IID> managedIDs, System.DateTime fromDate, System.DateTime toDate, HistQuotesInterval interval)
+        public YahooManaged.Base.Response<HistQuotesResult> Download(IEnumerable<IID> managedIDs, System.DateTime fromDate, System.DateTime toDate, HistQuotesInterval interval)
         {
             if (managedIDs == null)
                 throw new ArgumentNullException("managedIDs", "The passed list is null.");
@@ -87,7 +87,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="interval">The trading period interval</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<HistQuotesResult> Download(IEnumerable<string> unmanagedIDs, System.DateTime fromDate, System.DateTime toDate, HistQuotesInterval interval)
+        public YahooManaged.Base.Response<HistQuotesResult> Download(IEnumerable<string> unmanagedIDs, System.DateTime fromDate, System.DateTime toDate, HistQuotesInterval interval)
         {
             if (unmanagedIDs == null)
                 throw new ArgumentNullException("unmanagedID", "The passed ID is empty.");
@@ -96,7 +96,7 @@ namespace MaasOne.Finance.YahooFinance
             return this.Download(new HistQuotesDownloadSettings(ids, fromDate, toDate, interval));
         }
 
-        public Base.Response<HistQuotesResult> Download(HistQuotesDownloadSettings settings)
+        public YahooManaged.Base.Response<HistQuotesResult> Download(HistQuotesDownloadSettings settings)
         {
 
             return base.Download(settings);

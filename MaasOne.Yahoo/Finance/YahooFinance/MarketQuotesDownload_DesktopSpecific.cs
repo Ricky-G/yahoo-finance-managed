@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,13 +23,10 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 using System.ComponentModel;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class MarketQuotesDownload 
     {
@@ -41,7 +38,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="rankDir">The direction of ranking</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<MarketQuotesResult> DownloadAllSectorQuotes(MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, ListSortDirection rankDir = ListSortDirection.Ascending)
+        public YahooManaged.Base.Response<MarketQuotesResult> DownloadAllSectorQuotes(MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, ListSortDirection rankDir = ListSortDirection.Ascending)
         {
             return this.Download(new MarketQuotesDownloadSettings() { RankedBy = rankedBy, RankDirection = rankDir });
         }
@@ -53,7 +50,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="rankDir">The direction of ranking</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<MarketQuotesResult> DownloadIndustryQuotes(Sector sector, MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, ListSortDirection rankDir = ListSortDirection.Ascending)
+        public YahooManaged.Base.Response<MarketQuotesResult> DownloadIndustryQuotes(Sector sector, MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, ListSortDirection rankDir = ListSortDirection.Ascending)
         {
             return this.Download(new MarketQuotesDownloadSettings() { Sector = sector, RankedBy = rankedBy, RankDirection = rankDir });
         }
@@ -65,11 +62,11 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="rankDir">The direction of ranking</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<MarketQuotesResult> DownloadCompanyQuotes(Industry industyID, MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, System.ComponentModel.ListSortDirection rankDir = System.ComponentModel.ListSortDirection.Ascending)
+        public YahooManaged.Base.Response<MarketQuotesResult> DownloadCompanyQuotes(Industry industyID, MarketQuoteProperty rankedBy = MarketQuoteProperty.Name, System.ComponentModel.ListSortDirection rankDir = System.ComponentModel.ListSortDirection.Ascending)
         {
             return this.Download(new MarketQuotesDownloadSettings() { Industry = industyID, RankedBy = rankedBy, RankDirection = rankDir });
         }
-        public Base.Response<MarketQuotesResult> Download(MarketQuotesDownloadSettings settings)
+        public YahooManaged.Base.Response<MarketQuotesResult> Download(MarketQuotesDownloadSettings settings)
         {
             return base.Download(settings);
         }

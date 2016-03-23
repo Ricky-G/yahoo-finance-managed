@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,17 +23,17 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class QuoteOptionsDownload
     {
 
-        public Base.Response<QuoteOptionsResult> Download(IID managedID)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IID managedID)
         {
             if (managedID == null)
             {
@@ -44,7 +44,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(managedID.ID);
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IEnumerable<IID> managedIDs)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IEnumerable<IID> managedIDs)
         {
             if (managedIDs == null)
             {
@@ -55,7 +55,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(FinanceHelper.IIDsToStrings(managedIDs));
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IID managedID, System.DateTime expirationDate)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IID managedID, System.DateTime expirationDate)
         {
             if (managedID == null)
             {
@@ -66,7 +66,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(managedID.ID, expirationDate);
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IEnumerable<IID> managedIDs, System.DateTime expirationDate)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IEnumerable<IID> managedIDs, System.DateTime expirationDate)
         {
             if (managedIDs == null)
             {
@@ -77,7 +77,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(FinanceHelper.IIDsToStrings(managedIDs), expirationDate);
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IID managedID, IEnumerable<System.DateTime> expirationDates)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IID managedID, IEnumerable<System.DateTime> expirationDates)
         {
             if (managedID == null)
             {
@@ -89,7 +89,7 @@ namespace MaasOne.Finance.YahooFinance
             }
         }
 
-        public Base.Response<QuoteOptionsResult> Download(string unmanagedID)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(string unmanagedID)
         {
             if (unmanagedID == string.Empty)
             {
@@ -100,7 +100,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(new string[] { unmanagedID });
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IEnumerable<string> unmanagedIDs)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IEnumerable<string> unmanagedIDs)
         {
             if (unmanagedIDs == null)
             {
@@ -111,7 +111,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(new QuoteOptionsDownloadSettings() { IDs = MyHelper.EnumToArray(unmanagedIDs) });
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(string unmanagedID, System.DateTime expirationDate)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(string unmanagedID, System.DateTime expirationDate)
         {
             if (unmanagedID == string.Empty)
             {
@@ -122,7 +122,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(new string[] { unmanagedID }, expirationDate);
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(IEnumerable<string> unmanagedIDs, System.DateTime expirationDate)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(IEnumerable<string> unmanagedIDs, System.DateTime expirationDate)
         {
             if (unmanagedIDs == null)
             {
@@ -133,7 +133,7 @@ namespace MaasOne.Finance.YahooFinance
                 return this.Download(new QuoteOptionsDownloadSettings() { IDs = MyHelper.EnumToArray(unmanagedIDs), ExpirationDates = new System.DateTime[] { expirationDate } });
             }
         }
-        public Base.Response<QuoteOptionsResult> Download(string unmanagedID, IEnumerable<System.DateTime> expirationDates)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(string unmanagedID, IEnumerable<System.DateTime> expirationDates)
         {
             if (unmanagedID == string.Empty)
             {
@@ -145,7 +145,7 @@ namespace MaasOne.Finance.YahooFinance
             }
         }
 
-        public Base.Response<QuoteOptionsResult> Download(QuoteOptionsDownloadSettings settings)
+        public YahooManaged.Base.Response<QuoteOptionsResult> Download(QuoteOptionsDownloadSettings settings)
         {
             return base.Download(settings);
         }

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("MaasOne")]
-[assembly: AssemblyDescription("MaasOne base library for managed WebServices")]
+[assembly: AssemblyTitle("YahooManaged")]
+[assembly: AssemblyDescription("YahooManaged base library for managed WebServices")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("MaasOne")]
-[assembly: AssemblyProduct("MaasOne")]
-[assembly: AssemblyCopyright("Copyright © Marius Häusler 2012")]
+[assembly: AssemblyCompany("YahooManaged")]
+[assembly: AssemblyProduct("YahooManaged")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,12 +23,12 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Base;
 
-
-namespace MaasOne.Finance.YahooFinance.Support
+namespace YahooManaged.Services.Finance.YahooFinance.Support
 {
     /// <summary>
     /// Class for downloading and calculating exchange rates
@@ -118,14 +118,14 @@ namespace MaasOne.Finance.YahooFinance.Support
         }
 
 
-        private void AsyncDownload_Completed(object sender, Base.DownloadCompletedEventArgs<ExchangeRateResult> e)
+        private void AsyncDownload_Completed(object sender, YahooManaged.Base.DownloadCompletedEventArgs<ExchangeRateResult> e)
         {
             AsyncDownloadArgs dlArgs = (AsyncDownloadArgs)e.UserArgs;
-            if (e.Response.Connection.State == Base.ConnectionState.Success & dlArgs.Counter == mDonwloadCounter)
+            if (e.Response.Connection.State == YahooManaged.Base.ConnectionState.Success & dlArgs.Counter == mDonwloadCounter)
                 mExchangeItems = e.Response.Result.Items;
             if (AsyncUpdateCompleted != null)
             {
-                AsyncUpdateCompleted(this, new ExchangeRateCalculatorCompletedEventArgs(dlArgs.UserArgs, e.Response.Connection.State == Base.ConnectionState.Success));
+                AsyncUpdateCompleted(this, new ExchangeRateCalculatorCompletedEventArgs(dlArgs.UserArgs, e.Response.Connection.State == YahooManaged.Base.ConnectionState.Success));
             }
         }
 
@@ -207,7 +207,7 @@ namespace MaasOne.Finance.YahooFinance.Support
         }
 
 
-        private class AsyncDownloadArgs : Base.DownloadEventArgs
+        private class AsyncDownloadArgs : DownloadEventArgs
         {
             public long Counter = 0;
             public AsyncDownloadArgs(object userArgs, long cnt)
@@ -222,7 +222,7 @@ namespace MaasOne.Finance.YahooFinance.Support
     /// Stores the downloaded size in bytes
     /// </summary>
     /// <remarks></remarks>
-    public class ExchangeRateCalculatorCompletedEventArgs : Base.DownloadEventArgs
+    public class ExchangeRateCalculatorCompletedEventArgs : DownloadEventArgs
     {
         private bool mSuccess;
         public bool Success

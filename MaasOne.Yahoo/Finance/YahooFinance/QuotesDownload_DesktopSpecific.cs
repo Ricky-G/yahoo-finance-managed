@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,17 +23,17 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
+using YahooManaged.Finance;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     public partial class QuotesDownload
     {
 
-        public Base.Response<QuotesResult> Download(IEnumerable<string> unmanagedIDs) {
+        public YahooManaged.Base.Response<QuotesResult> Download(IEnumerable<string> unmanagedIDs) {
             return this.Download(unmanagedIDs, new QuoteProperty[] { QuoteProperty.Symbol, QuoteProperty.LastTradePriceOnly, QuoteProperty.DaysHigh, QuoteProperty.DaysLow, QuoteProperty.Volume, QuoteProperty.LastTradeDate, QuoteProperty.LastTradeTime });
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="properties">The properties of each quote data. If parameter is null/Nothing, Symbol and LastTradePrizeOnly will set as property. In this case, with YQL server you will get every available property.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<QuotesResult> Download(IID managedID, IEnumerable<QuoteProperty> properties)
+        public YahooManaged.Base.Response<QuotesResult> Download(IID managedID, IEnumerable<QuoteProperty> properties)
         {
             if (managedID == null)
                 throw new ArgumentNullException("id", "The passed id is null.");
@@ -56,7 +56,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="properties">The properties of each quote data. If parameter is null/Nothing, Symbol and LastTradePrizeOnly will set as property. In this case, with YQL server you will get every available property.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<QuotesResult> Download(string unmanagedID, IEnumerable<QuoteProperty> properties)
+        public YahooManaged.Base.Response<QuotesResult> Download(string unmanagedID, IEnumerable<QuoteProperty> properties)
         {
             if (unmanagedID == string.Empty)
                 throw new ArgumentNullException("unmanagedID", "The passed id is empty.");
@@ -69,7 +69,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="properties">The properties of each quote data. If parameter is null/Nothing, Symbol and LastTradePrizeOnly will set as property. In this case, with YQL server you will get every available property.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<QuotesResult> Download(IEnumerable<IID> managedIDs, IEnumerable<QuoteProperty> properties)
+        public YahooManaged.Base.Response<QuotesResult> Download(IEnumerable<IID> managedIDs, IEnumerable<QuoteProperty> properties)
         {
             if (managedIDs == null)
                 throw new ArgumentNullException("managedIDs", "The passed list is null.");
@@ -82,13 +82,13 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="properties">The properties of each quote data. If parameter is null/Nothing, Symbol and LastTradePrizeOnly will set as property. In this case, with YQL server you will get every available property.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public Base.Response<QuotesResult> Download(IEnumerable<string> unmanagedIDs, IEnumerable<QuoteProperty> properties)
+        public YahooManaged.Base.Response<QuotesResult> Download(IEnumerable<string> unmanagedIDs, IEnumerable<QuoteProperty> properties)
         {
             if (unmanagedIDs == null)
                 throw new ArgumentNullException("unmanagedIDs", "The passed list is null.");
             return this.Download(new QuotesDownloadSettings() { IDs = MyHelper.EnumToArray(unmanagedIDs), Properties = MyHelper.EnumToArray(properties) });
         }
-        public Base.Response<QuotesResult> Download(QuotesDownloadSettings settings)
+        public YahooManaged.Base.Response<QuotesResult> Download(QuotesDownloadSettings settings)
         {
             return base.Download(settings);
         }

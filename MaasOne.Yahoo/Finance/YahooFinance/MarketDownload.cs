@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,22 +23,21 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
 using System.Collections.Generic;
-using System.Text;
-using MaasOne.Xml;
-using System.Threading;
 using System.ComponentModel;
-using System.Xml.Linq;
+using System.Threading;
+using YahooManaged.Base;
+using YahooManaged.Xml;
 
-
-namespace MaasOne.Finance.YahooFinance
+namespace YahooManaged.Services.Finance.YahooFinance
 {
     /// <summary>
     /// Provides methods for downloading sectors, industries and company IDs.
     /// </summary>
     /// <remarks></remarks>
-    public partial class MarketDownload : Base.DownloadClient<MarketResult>
+    public partial class MarketDownload : DownloadClient<MarketResult>
     {
 
         private System.Globalization.CultureInfo mDefaultCulture = new System.Globalization.CultureInfo("en-US");
@@ -49,7 +48,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="ea">The event args of the asynchronous download</param>
         /// <remarks></remarks>
         public event AsyncSectorsDownloadCompletedEventHandler AsyncSectorsDownloadCompleted;
-        public delegate void AsyncSectorsDownloadCompletedEventHandler(Base.DownloadClient<MarketResult> sender, SectorsDownloadCompletedEventArgs ea);
+        public delegate void AsyncSectorsDownloadCompletedEventHandler(YahooManaged.Base.DownloadClient<MarketResult> sender, SectorsDownloadCompletedEventArgs ea);
         /// <summary>
         /// Raises if an asynchronous download of industries completes.
         /// </summary>
@@ -57,7 +56,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <param name="ea">The event args of the asynchronous download</param>
         /// <remarks></remarks>
         public event AsyncIndustriesDownloadCompletedEventHandler AsyncIndustriesDownloadCompleted;
-        public delegate void AsyncIndustriesDownloadCompletedEventHandler(Base.DownloadClient<MarketResult> sender, IndustryDownloadCompletedEventArgs ea);
+        public delegate void AsyncIndustriesDownloadCompletedEventHandler(YahooManaged.Base.DownloadClient<MarketResult> sender, IndustryDownloadCompletedEventArgs ea);
 
         public MarketDownloadSettings Settings { get { return (MarketDownloadSettings)base.Settings; } set { base.SetSettings(value); } }
 
@@ -124,7 +123,7 @@ namespace MaasOne.Finance.YahooFinance
             base.DownloadAsync(settings, userArgs);
         }
 
-        protected override Base.DownloadCompletedEventArgs<MarketResult> ConvertDownloadCompletedEventArgs(Base.DefaultDownloadCompletedEventArgs<MarketResult> e)
+        protected override YahooManaged.Base.DownloadCompletedEventArgs<MarketResult> ConvertDownloadCompletedEventArgs(YahooManaged.Base.DefaultDownloadCompletedEventArgs<MarketResult> e)
         {
             MarketDownloadSettings set = (MarketDownloadSettings)e.Settings;
             if (set.Sectors != null)
@@ -153,7 +152,7 @@ namespace MaasOne.Finance.YahooFinance
                 return null;
             }
         }
-        protected override Base.Response<MarketResult> ConvertResponse(Base.DefaultResponse<MarketResult> response)
+        protected override YahooManaged.Base.Response<MarketResult> ConvertResponse(YahooManaged.Base.DefaultResponse<MarketResult> response)
         {
             if (response.Result is SectorResult)
             {
@@ -168,7 +167,7 @@ namespace MaasOne.Finance.YahooFinance
                 return null;
             }
         }
-        protected override MarketResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override MarketResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             MarketDownloadSettings set = (MarketDownloadSettings)settings;
             if (set.Sectors != null)
@@ -298,7 +297,7 @@ namespace MaasOne.Finance.YahooFinance
     /// Provides information and response of an asynchronous sector download.
     /// </summary>
     /// <remarks></remarks>
-    public class SectorsDownloadCompletedEventArgs : Base.DownloadCompletedEventArgs<MarketResult>
+    public class SectorsDownloadCompletedEventArgs : DownloadCompletedEventArgs<MarketResult>
     {
         /// <summary>
         /// Gets the response with sector information.
@@ -322,7 +321,7 @@ namespace MaasOne.Finance.YahooFinance
     /// Provides connection information and sector information.
     /// </summary>
     /// <remarks></remarks>
-    public class SectorResponse : Base.Response<MarketResult>
+    public class SectorResponse : Response<MarketResult>
     {
         /// <summary>
         /// Gets the received sector informations.
@@ -334,7 +333,7 @@ namespace MaasOne.Finance.YahooFinance
         {
             get { return (SectorResult)base.Result; }
         }
-        internal SectorResponse(Base.ConnectionInfo info, SectorResult result)
+        internal SectorResponse(YahooManaged.Base.ConnectionInfo info, SectorResult result)
             : base(info, result)
         {
         }
@@ -425,7 +424,7 @@ namespace MaasOne.Finance.YahooFinance
     /// Provides information and response of an asynchronous industry download.
     /// </summary>
     /// <remarks></remarks>
-    public class IndustryDownloadCompletedEventArgs : Base.DownloadCompletedEventArgs<MarketResult>
+    public class IndustryDownloadCompletedEventArgs : DownloadCompletedEventArgs<MarketResult>
     {
         /// <summary>
         /// Gets the response with industry information
@@ -449,7 +448,7 @@ namespace MaasOne.Finance.YahooFinance
     /// Provides connection information and industry information.
     /// </summary>
     /// <remarks></remarks>
-    public class IndustryResponse : Base.Response<MarketResult>
+    public class IndustryResponse : Response<MarketResult>
     {
         /// <summary>
         /// Gets the received industry informations.
@@ -458,7 +457,7 @@ namespace MaasOne.Finance.YahooFinance
         /// <returns></returns>
         /// <remarks></remarks>
         public IndustryResult Result { get { return (IndustryResult)base.Result; } }
-        internal IndustryResponse(Base.ConnectionInfo info, IndustryResult result)
+        internal IndustryResponse(YahooManaged.Base.ConnectionInfo info, IndustryResult result)
             : base(info, result)
         {
         }
@@ -526,7 +525,7 @@ namespace MaasOne.Finance.YahooFinance
 
 
 
-    public class MarketDownloadSettings : Base.SettingsBase
+    public class MarketDownloadSettings : SettingsBase
     {
         private Sector[] mSectors;
         /// <summary>

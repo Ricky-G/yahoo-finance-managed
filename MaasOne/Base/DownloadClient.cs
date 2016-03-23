@@ -1,10 +1,10 @@
 ﻿// ******************************************************************************
 // ** 
-// **  MaasOne WebServices
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  YahooManaged WebServices
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -30,10 +30,10 @@ using System.Diagnostics;
 using System.Threading;
 using System.Text;
 using System.Net;
-using MaasOne;
+using YahooManaged;
 
 
-namespace MaasOne.Base
+namespace YahooManaged.Base
 {
     /// <summary>
     /// Provides methods and properties for downloading data and controlling these download processes. This class must be inherited.
@@ -45,7 +45,7 @@ namespace MaasOne.Base
         public event AsyncDownloadCompletedEventHandler AsyncDownloadCompleted;
         public delegate void AsyncDownloadCompletedEventHandler(DownloadClient<T> sender, DownloadCompletedEventArgs<T> e);
 
-        public event MaasOne.Base.AsyncDownloadCompletedEventHandler AsyncDownloadCompletedEvent;
+        public event YahooManaged.Base.AsyncDownloadCompletedEventHandler AsyncDownloadCompletedEvent;
 
 
         private readonly List<TimeoutWebClient<T>> mWebClients = new List<TimeoutWebClient<T>>();

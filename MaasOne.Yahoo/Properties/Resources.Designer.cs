@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MaasOne.Properties {
+namespace YahooManaged.Services.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MaasOne.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MaasOne.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("YahooManaged.Services.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,15 +79,14 @@ namespace MaasOne.Properties {
         /// ******************************************************************************
         /// ** 
         /// **  Yahoo! Managed
-        /// **  Written by Marius Häusler 2012
+        /// **  Originally written by Marius Häusler 2012
         /// **  It would be pleasant, if you contact me when you are using this code.
         /// **  Contact: YahooFinanceManaged@gmail.com
         /// **  Project Home: http:code.google.com/p/yahoo-finance-managed/
         /// **  
         /// ******************************************************************************
         /// **  
-        /// **  Copyright 2012 Marius Häusler
-        /// ** [rest of string was truncated]&quot;;.
+        /// **  Copyright 2012 Marius H [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string market {
             get {

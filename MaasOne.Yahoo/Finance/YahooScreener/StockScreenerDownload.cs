@@ -1,10 +1,10 @@
 // ******************************************************************************
 // ** 
 // **  Yahoo! Managed
-// **  Written by Marius Häusler 2012
-// **  It would be pleasant, if you contact me when you are using this code.
-// **  Contact: YahooFinanceManaged@gmail.com
-// **  Project Home: http://code.google.com/p/yahoo-finance-managed/
+// **  Originally written by Marius Häusler 2012
+// **  Now it is maintained by the public community on GitHub
+// **  Any contributions will be greatly appreciated.  Please go to be project home below and create a fork, make your change and merge back.
+// **  Project Home: https://github.com/RickyGAkl/yahoo-finance-managed
 // **  
 // ******************************************************************************
 // **  
@@ -23,23 +23,19 @@
 // **  limitations under the License.
 // ** 
 // ******************************************************************************
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Net;
-using MaasOne.Xml;
-using MaasOne.Finance.YahooScreener;
-using MaasOne.Finance.YahooScreener.Criterias;
-using MaasOne.Finance.YahooFinance;
+using YahooManaged.Base;
+using YahooManaged.Finance;
+using YahooManaged.Services.Finance.YahooFinance;
+using YahooManaged.Services.Finance.YahooScreener.Criterias;
 
-
-namespace MaasOne.Finance.YahooScreener
+namespace YahooManaged.Services.Finance.YahooScreener
 {
 
 
-    public partial class StockScreenerDownload : Base.DownloadClient<StockScreenerResult>
+    public partial class StockScreenerDownload : DownloadClient<StockScreenerResult>
     {
 
         public StockScreenerDownloadSettings Settings { get { return (StockScreenerDownloadSettings)base.Settings; } set { base.SetSettings(value); } }
@@ -75,7 +71,7 @@ namespace MaasOne.Finance.YahooScreener
             base.DownloadAsync(settings, userArgs);
         }
 
-        protected override StockScreenerResult ConvertResult(Base.ConnectionInfo connInfo, System.IO.Stream stream, Base.SettingsBase settings)
+        protected override StockScreenerResult ConvertResult(YahooManaged.Base.ConnectionInfo connInfo, System.IO.Stream stream, YahooManaged.Base.SettingsBase settings)
         {
             StockScreenerDownloadSettings set = (StockScreenerDownloadSettings)settings;
             List<StockScreenerData> results = new List<StockScreenerData>();
@@ -740,7 +736,7 @@ namespace MaasOne.Finance.YahooScreener
 
 
 
-    public class StockScreenerDownloadSettings : Base.SettingsBase, ITextEncodingSettings
+    public class StockScreenerDownloadSettings : SettingsBase, ITextEncodingSettings
     {
         public System.Text.Encoding TextEncoding { get; set; }
 
